@@ -92,14 +92,16 @@ class _LoginScreenState extends State<LoginScreen> {
                             : Icons.visibility_off,
                         color: primaryBlue,
                       )),
-                  textInputType: TextInputType.number,
+                  textInputType: TextInputType.text,
                   obscureText: !loginController.isVisible.value,
                   validator: (PassCurrentValue) {
                     RegExp regex = RegExp(
-                        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{6,15}$');
+                        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,15}$');
                     var passNonNullValue = PassCurrentValue ?? "";
                     if (passNonNullValue.isEmpty) {
                       return ("Password is required");
+                    } else if (!regex.hasMatch(passNonNullValue)) {
+                      return "Password must contain at least 8 characters, one \nuppercase letter, one lowercase letter, one number \nand one special character";
                     }
                     return null;
                   },

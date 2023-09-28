@@ -28,7 +28,8 @@ class LoginController extends GetxController {
               value?.rememberMe == 'true' ? user.email ?? '' : '';
           editedEmail = user.email ?? '';
         } else {
-          emailTextEditingController.text = value?.email ?? '';
+          emailTextEditingController.text =
+              value?.rememberMe == 'true' ? value?.email ?? '' : '';
         }
       });
     });

@@ -12,6 +12,7 @@ class HomeController extends GetxController {
   UserDetailsModel userDetailsModel = UserDetailsModel();
 
   RxString profileImg = ''.obs;
+  String emailText = Get.arguments;
 
   @override
   void onInit() {
@@ -24,7 +25,7 @@ class HomeController extends GetxController {
     await SessionManager.getUserDetails().then((value) {
       username.value = value?.name ?? 'Flutter Developer';
       print('email.value ${email.value}');
-      email.value = value?.email ?? 'email@gmail.com';
+      email.value = value?.email ?? emailText;
       workExprience.value = value?.exprience ?? '2';
       profileImg.value = value?.image ?? '';
       print('profileImg.value ${profileImg.value}');
