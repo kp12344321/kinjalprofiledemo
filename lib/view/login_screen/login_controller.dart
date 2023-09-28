@@ -58,7 +58,7 @@ class LoginController extends GetxController {
       await saveData();
       Get.offAllNamed(AppRoutes.home,
           arguments: emailTextEditingController.text);
-    } else if (emailTextEditingController.text == editedEmail ||
+    } else if (emailTextEditingController.text == editedEmail &&
         passwordTextEditingController.text == password) {
       print('check>>>>103');
       await saveData();
